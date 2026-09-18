@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RDE “Studio” — La manifattura della maglieria, 100% Made in Italy</title>
+<meta name="description" content="RDE “Studio” racconta come nasce un capo di maglieria di lusso: dal filo alla spedizione, ogni fase della manifattura RDE Knitting Developers. Montagnana (PD), dal 1985. 100% Made in Italy.">
+<meta name="theme-color" content="#0a0a09">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RDE “Studio” — Dove il filo diventa capo">
+<meta property="og:description" content="Un viaggio interattivo dentro la manifattura della maglieria di lusso. 100% Made in Italy, dal 1985.">
+<meta property="og:image" content="assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/hero-poster.webp">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <img class="preloader__logo" src="assets/logo-rde.svg" alt="" width="180" height="96">
+    <span class="preloader__studio">“Studio”</span>
+    <div class="preloader__bar"><i id="preloaderBar"></i></div>
+    <div class="preloader__meta">
+      <span data-i18n="pre.label">Infilatura in corso</span>
+      <span class="mono"><b id="preloaderNum">000</b> %</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CURSOR ============ -->
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" id="cursorLabel"></span></div>
+
+<!-- ============ SCROLL THREAD ============ -->
+<div class="thread" aria-hidden="true"><i id="threadFill"></i><b id="threadNeedle"></b></div>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <a class="brand" href="#top" aria-label="RDE Studio — torna all'inizio">
+    <img src="assets/logo-rde.svg" alt="RDE Knitting Developers" width="84" height="45">
+    <span class="brand__studio">“Studio”</span>
+  </a>
+  <nav class="nav" aria-label="Principale">
+    <a href="#manifattura" data-i18n="nav.process">Manifattura</a>
+    <a href="#telaio" data-i18n="nav.loom">Il telaio</a>
+    <a href="#tecnologia" data-i18n="nav.tech">Tecnologia</a>
+    <a href="#storia" data-i18n="nav.story">Storia</a>
+    <a href="#contatti" data-i18n="nav.contact">Contatti</a>
+  </nav>
+  <div class="header__tools">
+    <button class="lang" id="langBtn" type="button" aria-label="Switch language"><span data-lang="it">IT</span><i>/</i><span data-lang="en">EN</span></button>
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__nav" aria-label="Menu mobile">
+    <a href="#manifattura"><small>01</small><span data-i18n="nav.process">Manifattura</span></a>
+    <a href="#telaio"><small>02</small><span data-i18n="nav.loom">Il telaio</span></a>
+    <a href="#tecnologia"><small>03</small><span data-i18n="nav.tech">Tecnologia</span></a>
+    <a href="#storia"><small>04</small><span data-i18n="nav.story">Storia</span></a>
+    <a href="#contatti"><small>05</small><span data-i18n="nav.contact">Contatti</span></a>
+  </nav>
+  <p class="menu__foot mono">Montagnana (PD) — Italia · 100% Made in Italy</p>
+</div>
+
+<!-- ============ CHAPTER RAIL ============ -->
+<aside class="rail" id="rail" aria-label="Fasi della manifattura">
+  <a href="#fase-filo" data-rail="0"><span data-i18n="ch1.kicker">Il filo</span><i>01</i></a>
+  <a href="#telaio" data-rail="1"><span data-i18n="ch2.kicker">Il disegno</span><i>02</i></a>
+  <a href="#fase-tessitura" data-rail="2"><span data-i18n="ch3.kicker">La tessitura</span><i>03</i></a>
+  <a href="#fase-teli" data-rail="3"><span data-i18n="ch4.kicker">I teli</span><i>04</i></a>
+  <a href="#fase-misura" data-rail="4"><span data-i18n="ch5.kicker">La misura</span><i>05</i></a>
+  <a href="#fase-controllo" data-rail="5"><span data-i18n="ch6.kicker">Il controllo</span><i>06</i></a>
+  <a href="#fase-imballo" data-rail="6"><span data-i18n="ch7.kicker">La partenza</span><i>07</i></a>
+</aside>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero__media" id="heroMedia">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.webp">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero__veil"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="kicker hero__kicker"><i class="dot"></i><span data-i18n="hero.kicker">Manifattura di maglieria · dal 1985</span></p>
+    <h1 class="hero__title" id="heroTitle">
+      <span class="line"><span data-i18n="hero.t1">Dove il filo</span></span>
+      <span class="line"><span data-i18n="hero.t2">diventa <em>capo.</em></span></span>
+    </h1>
+    <div class="hero__foot">
+      <p class="hero__lead" data-i18n="hero.lead">Questo non è il sito di un’azienda. È il racconto di un mestiere: sette gesti, un solo filo, tutto sotto lo stesso tetto.</p>
+      <a class="btn" href="#manifattura" data-magnetic data-cursor="↓"><span data-i18n="hero.cta">Entra in laboratorio</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+    </div>
+  </div>
+
+  <div class="hero__meta mono">
+    <span>45°13′N — 11°27′E</span>
+    <span>Montagnana · Padova · Italia</span>
+    <span class="hero__live"><i class="dot dot--live"></i><span data-i18n="hero.live">100% Made in Italy</span></span>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto" id="manifesto">
+  <canvas class="manifesto__knit" id="knitField" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="kicker"><i class="dot"></i><span data-i18n="man.kicker">Manifesto</span></p>
+    <p class="manifesto__text" id="manifestoText" data-i18n="man.text">Un maglione non si stampa, non si assembla, non si improvvisa. Si <em>programma</em> punto per punto, si <em>tesse</em> ago dopo ago, si <em>misura</em> al centimetro e si <em>guarda</em> controluce, maglia per maglia. RDE “Studio” è il luogo dove tutto questo accade — a mano, a macchina, in Italia.</p>
+    <div class="manifesto__facts">
+      <div><b class="serif" data-count="1985">1985</b><span data-i18n="man.f1">L’anno in cui abbiamo infilato il primo ago</span></div>
+      <div><b class="serif" data-count="7">7</b><span data-i18n="man.f2">Fasi di lavorazione, tutte interne</span></div>
+      <div><b class="serif"><span data-count="100">100</span>%</b><span data-i18n="man.f3">Made in Italy, dal filo alla scatola</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS INTRO ============ -->
+<section class="intro" id="manifattura">
+  <div class="wrap intro__grid">
+    <p class="kicker"><i class="dot"></i><span data-i18n="intro.kicker">La manifattura</span></p>
+    <h2 class="display" data-split data-i18n="intro.title">Sette gesti.<br>Un solo <em>filo.</em></h2>
+    <p class="intro__lead" data-reveal data-i18n="intro.lead">Segui il filo: ti porta dentro il laboratorio, fase dopo fase, nell’ordine esatto in cui un capo prende forma. Tocca, trascina, disegna. Qui si impara guardando.</p>
+  </div>
+  <canvas class="rope" id="rope" aria-hidden="true"></canvas>
+  <p class="rope__hint mono" data-i18n="intro.hint">↑ è un filo vero: prova a tirarlo</p>
+</section>
+
+<!-- ============ 01 · IL FILO ============ -->
+<section class="chapter chapter--filo" id="fase-filo" data-chapter="0">
+  <div class="wrap">
+    <header class="chapter__head">
+      <span class="chapter__num serif">01</span>
+      <div>
+        <p class="kicker"><i class="dot"></i><span data-i18n="ch1.kicker">Il filo</span></p>
+        <h2 class="display" data-split data-i18n="ch1.title">Tutto comincia<br>da una <em>rocca.</em></h2>
+      </div>
+    </header>
+
+    <div class="filo__grid">
+      <figure class="ph ph--tall" data-parallax="-8" data-cursor-label="filo">
+        <img src="assets/img/macchine-22.webp" alt="Rocca di filato verde smeraldo sul telaio" loading="lazy" width="1800" height="1200">
+      </figure>
+      <div class="filo__copy">
+        <p class="lead" data-reveal data-i18n="ch1.lead">Prima del disegno, prima della macchina, c’è la materia. Lane, cashmere, cotoni, sete: arrivano in rocche e ognuna ha un carattere — una mano, un peso, una torsione.</p>
+        <p data-reveal data-i18n="ch1.p">Si sceglie il titolo, si prova la tensione, si ascolta come il filo scorre nel guidafilo. È un lavoro di tatto prima che di tecnica: un filato capito bene è metà del capo.</p>
+        <ul class="specs mono" data-reveal>
+          <li><span data-i18n="ch1.s1k">Materia</span><b data-i18n="ch1.s1v">Fibre naturali e nobili</b></li>
+          <li><span data-i18n="ch1.s2k">Filiera</span><b data-i18n="ch1.s2v">Certificata GOTS · RWS · RMS · RAS</b></li>
+          <li><span data-i18n="ch1.s3k">Gesto</span><b data-i18n="ch1.s3v">Infilatura a mano, rocca per rocca</b></li>
+        </ul>
+      </div>
+      <figure class="ph ph--wide" data-parallax="6">
+        <img src="assets/img/macchine-32.webp" alt="Rocche di filato colorate allineate sopra le macchine" loading="lazy" width="1800" height="1200">
+        <figcaption class="mono" data-i18n="ch1.cap1">Le rocche in attesa sopra il telaio</figcaption>
+      </figure>
+      <figure class="ph ph--small" data-parallax="-8">
+        <img src="assets/img/macchine-44.webp" alt="Filato mouliné blu e bianco" loading="lazy" width="1800" height="1200">
+        <figcaption class="mono" data-i18n="ch1.cap2">Mouliné blu e bianco</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · IL DISEGNO + TELAIO INTERATTIVO ============ -->
+<section class="chapter chapter--disegno" id="telaio" data-chapter="1">
+  <div class="wrap">
+    <header class="chapter__head">
+      <span class="chapter__num serif">02</span>
+      <div>
+        <p class="kicker"><i class="dot"></i><span data-i18n="ch2.kicker">Il disegno</span></p>
+        <h2 class="display" data-split data-i18n="ch2.title">Ogni maglia<br>è una riga di <em>codice.</em></h2>
+      </div>
+    </header>
+
+    <div class="disegno__top">
+      <div class="disegno__copy">
+        <p class="lead" data-reveal data-i18n="ch2.lead">Un capo di maglieria nasce su uno schermo. Il programmatore traduce lo schizzo dello stilista in un linguaggio che la macchina capisce: un quadretto, una maglia.</p>
+        <p data-reveal data-i18n="ch2.p">Trecce, jacquard, intarsi, trafori, cali: ogni struttura viene disegnata punto per punto con tavoletta e penna, simulata, corretta, provata sul campione. È qui che si decide se un’idea può diventare un maglione.</p>
+      </div>
+      <figure class="ph ph--video" data-reveal>
+        <video data-autoplay muted loop playsinline preload="none" poster="assets/img/ufficio-12.webp">
+          <source src="assets/video/disegno.mp4" type="video/mp4">
+        </video>
+        <figcaption class="mono" data-i18n="ch2.cap1">Programmazione reale, ufficio tecnico RDE</figcaption>
+      </figure>
+    </div>
+
+    <!-- LOOM -->
+    <div class="loom" id="loom">
+      <div class="loom__head">
+        <div>
+          <p class="kicker"><i class="dot dot--live"></i><span data-i18n="loom.kicker">Telaio interattivo</span></p>
+          <h3 class="loom__title serif" data-i18n="loom.title">Adesso prova tu.</h3>
+        </div>
+        <p class="loom__intro" data-i18n="loom.intro">Disegna sulla griglia come fa il nostro programmatore: ogni quadretto è una maglia. Poi premi «Smacchina» e guarda il carro tessere il tuo disegno, rango dopo rango.</p>
+      </div>
+
+      <div class="loom__stage">
+        <div class="loom__panel loom__panel--grid">
+          <div class="loom__bar mono"><span data-i18n="loom.prog">Programma</span><span id="loomSize">32 × 24</span></div>
+          <canvas id="loomGrid" data-cursor-label="disegna" aria-label="Griglia di disegno: clicca o trascina per colorare le maglie" role="img"></canvas>
+        </div>
+        <div class="loom__panel loom__panel--knit">
+          <div class="loom__bar mono"><span data-i18n="loom.out">Tessuto</span><span id="loomStatus" data-i18n="loom.ready">Pronto</span></div>
+          <div class="loom__knitwrap">
+            <canvas id="loomKnit" aria-label="Anteprima del tessuto a maglia" role="img"></canvas>
+            <div class="loom__carriage" id="loomCarriage" aria-hidden="true"><i></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="loom__controls">
+        <div class="loom__group">
+          <span class="mono loom__label" data-i18n="loom.presets">Strutture</span>
+          <div class="chips" id="loomPresets">
+            <button type="button" class="chip is-active" data-preset="rombi" data-i18n="loom.p1">Rombi</button>
+            <button type="button" class="chip" data-preset="righe" data-i18n="loom.p2">Righe</button>
+            <button type="button" class="chip" data-preset="pied" data-i18n="loom.p3">Pied-de-poule</button>
+            <button type="button" class="chip" data-preset="greca" data-i18n="loom.p4">Greca</button>
+            <button type="button" class="chip" data-preset="rde">RDE</button>
+          </div>
+        </div>
+        <div class="loom__group">
+          <span class="mono loom__label" data-i18n="loom.yarnA">Filo A</span>
+          <div class="swatches" id="swA"></div>
+        </div>
+        <div class="loom__group">
+          <span class="mono loom__label" data-i18n="loom.yarnB">Filo B</span>
+          <div class="swatches" id="swB"></div>
+        </div>
+        <div class="loom__group loom__group--actions">
+          <button type="button" class="btn btn--ghost" id="loomInvert" data-i18n="loom.invert">Inverti</button>
+          <button type="button" class="btn btn--ghost" id="loomClear" data-i18n="loom.clear">Pulisci</button>
+          <button type="button" class="btn btn--solid" id="loomRun" data-magnetic><span data-i18n="loom.run">Smacchina</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · LA TESSITURA (horizontal) ============ -->
+<section class="chapter chapter--tessitura" id="fase-tessitura" data-chapter="2">
+  <div class="hscroll" id="hscroll">
+    <div class="hscroll__track" id="hscrollTrack">
+
+      <div class="hpanel hpanel--title">
+        <span class="chapter__num serif">03</span>
+        <p class="kicker"><i class="dot"></i><span data-i18n="ch3.kicker">La tessitura</span></p>
+        <h2 class="display" data-i18n="ch3.title">Migliaia di aghi,<br>un solo <em>respiro.</em></h2>
+        <p class="lead" data-i18n="ch3.lead">Il programma scende in macchina. Il carro corre lungo le fronture, gli aghi salgono e scendono, i guidafili si incrociano: il filo smette di essere filo.</p>
+        <p class="hpanel__hint mono"><span data-i18n="ch3.hint">Scorri</span> →</p>
+      </div>
+
+      <figure class="hpanel hpanel--img hpanel--xl" data-cursor-label="telaio">
+        <img src="assets/img/macchine-13.webp" alt="Dentro il telaio rettilineo: guidafili e frontura degli aghi" loading="lazy" width="1800" height="1200">
+        <figcaption class="mono"><b>A</b><span data-i18n="ch3.capA">Guidafili in posizione sopra la frontura</span></figcaption>
+      </figure>
+
+      <div class="hpanel hpanel--text">
+        <h3 class="serif" data-i18n="ch3.h1">Telai rettilinei elettronici Stoll</h3>
+        <p data-i18n="ch3.p1">Lavoriamo con macchine rettilinee elettroniche di ultima generazione. Tecnologia tedesca, mani italiane: la macchina esegue, ma è il tecnico che la regola — tensioni, tirapezza, velocità — finché la maglia non è esattamente quella voluta.</p>
+        <div class="bigtag"><span class="serif">ADF 530</span><small class="mono" data-i18n="ch3.tag">Guidafili motorizzati, indipendenti dal carro</small></div>
+      </div>
+
+      <figure class="hpanel hpanel--img hpanel--wide hpanel--left">
+        <img src="assets/img/macchine-46.webp" alt="Telaio Stoll ADF 530 con telo in uscita" loading="lazy" width="1800" height="1200">
+        <figcaption class="mono"><b>B</b><span data-i18n="ch3.capB">ADF 530: il telo scende dal tirapezza</span></figcaption>
+      </figure>
+
+      <figure class="hpanel hpanel--img hpanel--xl">
+        <img src="assets/img/macchine-20.webp" alt="Il cuore del telaio visto dall'interno" loading="lazy" width="1800" height="1200">
+        <figcaption class="mono"><b>C</b><span data-i18n="ch3.capC">Il cuore della macchina, visto da dentro</span></figcaption>
+      </figure>
+
+      <div class="hpanel hpanel--text">
+        <h3 class="serif" data-i18n="ch3.h2">Il filo non si ferma mai</h3>
+        <p data-i18n="ch3.p2">Dalla rocca al tendifilo, dal tendifilo al guidafilo, dal guidafilo all’ago. Un percorso di pochi metri dove basta un grammo di tensione in più per cambiare la mano di un capo. Per questo in sala macchine si guarda, si tocca e si ascolta.</p>
+      </div>
+
+      <figure class="hpanel hpanel--img hpanel--wide">
+        <img src="assets/img/macchine-07.webp" alt="Fila di tendifilo blu e arancioni" loading="lazy" width="1800" height="1200">
+        <figcaption class="mono"><b>D</b><span data-i18n="ch3.capD">I tendifilo: dosano la tensione di ogni capo di filato</span></figcaption>
+      </figure>
+
+      <figure class="hpanel hpanel--img hpanel--xl">
+        <img src="assets/img/macchine-49.webp" alt="Telo a rete bianco che scende dal telaio" loading="lazy" width="1800" height="1200">
+        <figcaption class="mono"><b>E</b><span data-i18n="ch3.capE">Nasce il telo: una rete traforata scende dalla frontura</span></figcaption>
+      </figure>
+
+      <figure class="hpanel hpanel--img hpanel--wide">
+        <img src="assets/img/macchine-33.webp" alt="La sala macchine del laboratorio" loading="lazy" width="1800" height="1200">
+        <figcaption class="mono"><b>F</b><span data-i18n="ch3.capF">La sala macchine</span></figcaption>
+      </figure>
+
+    </div>
+    <div class="hscroll__progress" aria-hidden="true"><i id="hscrollBar"></i></div>
+  </div>
+</section>
+
+<!-- ============ 04 · I TELI ============ -->
+<section class="chapter chapter--teli" id="fase-teli" data-chapter="3">
+  <div class="wrap">
+    <header class="chapter__head">
+      <span class="chapter__num serif">04</span>
+      <div>
+        <p class="kicker"><i class="dot"></i><span data-i18n="ch4.kicker">I teli</span></p>
+        <h2 class="display" data-split data-i18n="ch4.title">Il capo esiste già,<br>ma a <em>pezzi.</em></h2>
+      </div>
+    </header>
+    <div class="teli__grid">
+      <figure class="ph ph--wide" data-parallax="-6" data-cursor-label="teli">
+        <img src="assets/img/telini-01.webp" alt="Teli di maglia appena smacchinati sul tavolo" loading="lazy" width="1600" height="1067">
+        <figcaption class="mono" data-i18n="ch4.cap1">Teli appena scesi di macchina</figcaption>
+      </figure>
+      <div class="teli__copy">
+        <p class="lead" data-reveal data-i18n="ch4.lead">Davanti, dietro, maniche, colli. Dalla macchina non esce un maglione: escono teli già sagomati, calati maglia per maglia sulla forma del capo.</p>
+        <p data-reveal data-i18n="ch4.p">Niente taglio, niente spreco: la sagoma è nel programma. Ogni telo viene raccolto, contato e abbinato ai suoi fratelli — stesso bagno di colore, stessa partita di filo — prima di proseguire.</p>
+      </div>
+      <figure class="ph ph--tall" data-parallax="8">
+        <img src="assets/img/telini-05.webp" alt="Campioni di maglieria appesi in laboratorio" loading="lazy" width="1600" height="1067">
+        <figcaption class="mono" data-i18n="ch4.cap2">L’archivio dei campioni</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · LA MISURA ============ -->
+<section class="chapter chapter--misura theme-paper" id="fase-misura" data-chapter="4">
+  <div class="tape" aria-hidden="true"><div class="tape__strip" id="tapeStrip"></div></div>
+  <div class="wrap">
+    <header class="chapter__head">
+      <span class="chapter__num serif">05</span>
+      <div>
+        <p class="kicker"><i class="dot"></i><span data-i18n="ch5.kicker">La misura</span></p>
+        <h2 class="display" data-split data-i18n="ch5.title">Il lusso ha una<br>tolleranza: <em>zero.</em></h2>
+      </div>
+    </header>
+    <div class="misura__grid">
+      <figure class="ph ph--video" data-reveal>
+        <video data-autoplay muted loop playsinline preload="none" poster="assets/img/misurazione-04.webp">
+          <source src="assets/video/misura.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <div class="misura__copy">
+        <p class="lead" data-reveal data-i18n="ch5.lead">La maglia è viva: respira, cede, ritorna. Per questo ogni capo viene steso e misurato a mano, metro alla mano, punto per punto della scheda tecnica.</p>
+        <p data-reveal data-i18n="ch5.p">Spalla, torace, fondo, lunghezza manica, scollo. Ogni quota viene confrontata con quella richiesta dalla maison e annotata. Se un centimetro non torna, il capo non passa.</p>
+        <ol class="quote-list mono" data-reveal>
+          <li><i>A</i><span data-i18n="ch5.q1">Larghezza torace</span></li>
+          <li><i>B</i><span data-i18n="ch5.q2">Lunghezza totale</span></li>
+          <li><i>C</i><span data-i18n="ch5.q3">Lunghezza manica</span></li>
+          <li><i>D</i><span data-i18n="ch5.q4">Apertura scollo</span></li>
+          <li><i>E</i><span data-i18n="ch5.q5">Altezza costa</span></li>
+        </ol>
+      </div>
+      <figure class="ph ph--half" data-parallax="-6">
+        <img src="assets/img/misurazione-01.webp" alt="Metro da sarto steso su un maglione a trecce" loading="lazy" width="1600" height="1067">
+      </figure>
+      <figure class="ph ph--half" data-parallax="6">
+        <img src="assets/img/ufficio-17.webp" alt="Scheda tecnica RDE compilata a mano" loading="lazy" width="1600" height="1067">
+        <figcaption class="mono" data-i18n="ch5.cap1">La scheda tecnica: compilata a penna, capo per capo</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · IL CONTROLLO (lens) ============ -->
+<section class="chapter chapter--controllo" id="fase-controllo" data-chapter="5">
+  <div class="wrap">
+    <header class="chapter__head">
+      <span class="chapter__num serif">06</span>
+      <div>
+        <p class="kicker"><i class="dot"></i><span data-i18n="ch6.kicker">Il controllo</span></p>
+        <h2 class="display" data-split data-i18n="ch6.title">Controluce,<br>maglia per <em>maglia.</em></h2>
+      </div>
+    </header>
+
+    <div class="lens" id="lens" data-cursor-hide>
+      <img class="lens__base" src="assets/img/lente-11-bn.webp" alt="Controllo di un telo sul tavolo luminoso con la lente" loading="lazy" width="1800" height="1200">
+      <div class="lens__glass" id="lensGlass"><i></i></div>
+      <p class="lens__hint mono" data-i18n="ch6.hint">Muovi la lente sull’immagine</p>
+      <div class="lens__switch" role="group" aria-label="Scegli immagine">
+        <button type="button" class="is-active" data-base="assets/img/lente-11-bn.webp" data-color="assets/img/lente-11.webp" aria-label="Immagine 1">01</button>
+        <button type="button" data-base="assets/img/controllo-03-bn.webp" data-color="assets/img/controllo-03.webp" aria-label="Immagine 2">02</button>
+      </div>
+    </div>
+
+    <div class="controllo__grid">
+      <div class="controllo__copy">
+        <p class="lead" data-reveal data-i18n="ch6.lead">Nessun sensore vede quello che vede un occhio allenato. Ogni telo passa sul tavolo luminoso e sotto la lente: una maglia caduta, un filo tirato, un nodo — qui non sfugge niente.</p>
+        <p data-reveal data-i18n="ch6.p">La specola appiattisce il tessuto e ne rivela la struttura; la luce da sotto ne mostra la regolarità. Quello che si può riprendere si riprende ad ago, a mano. Quello che non è perfetto, non parte.</p>
+      </div>
+      <figure class="ph ph--video" data-reveal>
+        <video data-autoplay muted loop playsinline preload="none" poster="assets/img/lente-09.webp">
+          <source src="assets/video/controllo.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <figure class="ph ph--third" data-parallax="-8"><img src="assets/img/lente-01.webp" alt="Ago da rammendo visto attraverso la lente" loading="lazy" width="1800" height="1200"></figure>
+      <figure class="ph ph--third" data-parallax="4"><img src="assets/img/controllo-04.webp" alt="Specola in plexiglass sul tessuto jacquard" loading="lazy" width="1800" height="1200"></figure>
+      <figure class="ph ph--third" data-parallax="-4"><img src="assets/img/lente-14.webp" alt="Mani che stendono un telo sul tavolo luminoso" loading="lazy" width="1800" height="1200"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · LA PARTENZA ============ -->
+<section class="chapter chapter--imballo" id="fase-imballo" data-chapter="6">
+  <div class="scotch" aria-hidden="true">
+    <div class="scotch__band scotch__band--a"><div class="scotch__run"></div></div>
+    <div class="scotch__band scotch__band--b"><div class="scotch__run"></div></div>
+  </div>
+  <div class="wrap">
+    <header class="chapter__head">
+      <span class="chapter__num serif">07</span>
+      <div>
+        <p class="kicker"><i class="dot"></i><span data-i18n="ch7.kicker">La partenza</span></p>
+        <h2 class="display" data-split data-i18n="ch7.title">Un nastro, una firma,<br>e il capo <em>parte.</em></h2>
+      </div>
+    </header>
+    <div class="imballo__grid">
+      <div class="imballo__copy">
+        <p class="lead" data-reveal data-i18n="ch7.lead">Contati, piegati, protetti. I capi lasciano Montagnana verso gli atelier delle maison che li hanno immaginati.</p>
+        <p data-reveal data-i18n="ch7.p">Sul nastro che chiude ogni scatola c’è scritto chi siamo e da dove veniamo. Il nostro nome non comparirà sull’etichetta del capo — ma chi lo indossa sentirà tutto il resto.</p>
+      </div>
+      <figure class="ph ph--video" data-reveal>
+        <video data-autoplay muted loop playsinline preload="none" poster="assets/img/scotch-01.webp">
+          <source src="assets/video/imballo.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <figure class="ph ph--half" data-parallax="-6"><img src="assets/img/scotch-03.webp" alt="Nastro adesivo RDE Knitting Developers su una scatola" loading="lazy" width="1600" height="1067"></figure>
+      <figure class="ph ph--half" data-parallax="6"><img src="assets/img/capo-08.webp" alt="Dettaglio di un capo finito in maglia jacquard" loading="lazy" width="1600" height="1067"><figcaption class="mono" data-i18n="ch7.cap1">Il capo finito</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECNOLOGIA ============ -->
+<section class="tech" id="tecnologia">
+  <div class="wrap tech__grid">
+    <div class="tech__copy">
+      <p class="kicker"><i class="dot dot--live"></i><span data-i18n="tech.kicker">Tecnologia</span></p>
+      <h2 class="display" data-split data-i18n="tech.title">Artigiani,<br>ma in tempo <em>reale.</em></h2>
+      <p class="lead" data-reveal data-i18n="tech.lead">Ogni telaio è connesso. Dalla sala controllo seguiamo la produzione macchina per macchina: cosa sta tessendo, a che punto è, quando finirà.</p>
+      <p data-reveal data-i18n="tech.p">La tecnologia non sostituisce la mano: le toglie il superfluo. Meno tempi morti, meno errori, più attenzione dove serve davvero — sul capo.</p>
+      <ul class="pillars" data-reveal>
+        <li><b class="serif">01</b><span data-i18n="tech.l1">Campionatura e sviluppo interni</span></li>
+        <li><b class="serif">02</b><span data-i18n="tech.l2">Tessitura su telai elettronici Stoll</span></li>
+        <li><b class="serif">03</b><span data-i18n="tech.l3">Controllo qualità su ogni singolo capo</span></li>
+      </ul>
+    </div>
+    <div class="tech__media">
+      <figure class="device" data-parallax="-10"><img src="assets/img/sala-01.webp" alt="Monitor di controllo della produzione in tempo reale" loading="lazy" width="1100" height="1466"></figure>
+      <figure class="device device--b" data-parallax="12"><img src="assets/img/sala-02.webp" alt="Postazione di programmazione con monitor curvo" loading="lazy" width="1100" height="1466"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORIA ============ -->
+<section class="story theme-paper" id="storia">
+  <div class="wrap">
+    <div class="story__head">
+      <p class="kicker"><i class="dot"></i><span data-i18n="story.kicker">Storia</span></p>
+      <div class="story__years serif" aria-label="Dal 1985 a oggi"><span id="yearFrom">1985</span><i></i><span id="yearTo">1985</span></div>
+    </div>
+    <div class="story__grid">
+      <figure class="ph story__old" data-parallax="-6">
+        <img src="assets/img/heritage-1985.webp" alt="Il laboratorio nel 1985: taglio dei modelli accanto a un telaio Protti" loading="lazy" width="1536" height="1024">
+        <figcaption class="mono" data-i18n="story.cap1">1985 — Dove tutto è cominciato</figcaption>
+      </figure>
+      <div class="story__copy">
+        <h2 class="display display--sm" data-split data-i18n="story.title">Quarant’anni<br>dietro le <em>quinte.</em></h2>
+        <p class="lead" data-reveal data-i18n="story.lead">Dal 1985 lavoriamo per le più importanti case di moda italiane e internazionali. In silenzio, come si conviene a chi fa questo mestiere.</p>
+        <p data-reveal data-i18n="story.p">Sono cambiati i telai, i software, i filati. Non è cambiato il modo: un laboratorio, una sola sede a Montagnana — tra le mura medievali e la campagna padovana — dove ogni fase resta sotto i nostri occhi.</p>
+      </div>
+      <figure class="ph story__aerial" data-parallax="8">
+        <img src="assets/img/heritage-aerea.webp" alt="La sala macchine RDE vista dall'alto, in bianco e nero" loading="lazy" width="1800" height="1355">
+        <figcaption class="mono" data-i18n="story.cap2">Oggi — La sala macchine dall’alto</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MADE IN ITALY ============ -->
+<section class="italy" id="made-in-italy">
+  <div class="italy__bg" data-parallax-bg><img src="assets/img/esterno-08.webp" alt="" loading="lazy" width="1600" height="1067"></div>
+  <div class="wrap italy__inner">
+    <p class="kicker"><i class="dot"></i><span data-i18n="it.kicker">Origine</span></p>
+    <h2 class="italy__title serif"><span data-count="100">100</span>% <em>Made in Italy.</em></h2>
+    <p class="lead" data-reveal data-i18n="it.lead">Non un’etichetta: un indirizzo. Tutto ciò che hai visto accade qui, in Via dell’Industria 6 a Montagnana, provincia di Padova.</p>
+    <ul class="certs" data-reveal>
+      <li><b>GOTS</b><span data-i18n="it.c1">Global Organic Textile Standard</span></li>
+      <li><b>RWS</b><span data-i18n="it.c2">Responsible Wool Standard</span></li>
+      <li><b>RMS</b><span data-i18n="it.c3">Responsible Mohair Standard</span></li>
+      <li><b>RAS</b><span data-i18n="it.c4">Responsible Alpaca Standard</span></li>
+    </ul>
+    <p class="italy__note mono" data-i18n="it.note">Certificazioni rilasciate da ICEA · GOTS-31605 · ICEA-TX-4402</p>
+  </div>
+</section>
+
+<!-- ============ CONTATTI / FOOTER ============ -->
+<footer class="footer" id="contatti">
+  <div class="wrap">
+    <p class="kicker"><i class="dot"></i><span data-i18n="ft.kicker">Contatti</span></p>
+    <a class="footer__cta serif" href="mailto:info@rdeknitting.it" data-cursor-label="scrivi">
+      <span data-i18n="ft.cta">Parliamo del tuo<br><em>prossimo capo.</em></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6m0 0H8m10 0v10" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+    </a>
+
+    <div class="footer__grid">
+      <div>
+        <h4 class="mono" data-i18n="ft.h1">Laboratorio</h4>
+        <address>RDE Knitting Developers<br>Via dell’Industria, 6<br>35044 Montagnana (PD) — Italia</address>
+      </div>
+      <div>
+        <h4 class="mono" data-i18n="ft.h2">Scrivici</h4>
+        <p><a class="link" href="mailto:info@rdeknitting.it">info@rdeknitting.it</a><br><a class="link" href="mailto:produzione@rdeknitting.it">produzione@rdeknitting.it</a></p>
+      </div>
+      <div>
+        <h4 class="mono" data-i18n="ft.h3">Chiamaci</h4>
+        <p><a class="link" href="tel:+390429800911">+39 0429 800911</a></p>
+      </div>
+      <div>
+        <h4 class="mono" data-i18n="ft.h4">L’azienda</h4>
+        <p><a class="link" href="https://www.rdeknitting.it/" target="_blank" rel="noopener">rdeknitting.it ↗</a><br><span class="dim" data-i18n="ft.corp">Il sito istituzionale</span></p>
+      </div>
+    </div>
+
+    <div class="footer__logo" aria-hidden="true">
+      <img src="assets/logo-rde.svg" alt="" width="900" height="480" loading="lazy">
+      <span class="serif">“Studio”</span>
+    </div>
+
+    <div class="footer__legal mono">
+      <span>© <span id="year">2026</span> RDE Knitting Developers · P.IVA 05623670287</span>
+      <span data-i18n="ft.made">Pensato, tessuto e raccontato in Italia</span>
+      <a href="#top" class="link" data-i18n="ft.top">Torna su ↑</a>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/loom.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
